@@ -4,6 +4,7 @@ import AboutSection from "./components/AboutSection";
 import ProjectsSection from "./components/ProjectsSection";
 import EmailSection from "./components/EmailSection";
 import MyExperienceSection from "./components/MyExperience";
+import CustomizedTimeline from "./components/MovTimeline";
 
 import Footer from "./components/Footer";
 
@@ -16,6 +17,7 @@ export default function Home() {
         {/* <AchievementsSection /> */}
         <AboutSection />
         <MyExperienceSection />
+        <CustomizedTimeline />
         <ProjectsSection />
         <EmailSection />
       </div>

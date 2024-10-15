@@ -37,7 +37,7 @@ const HeroSection = () => {
             />
           </h1>
           <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
-          Hello, I&aposm Raajz, a graduate from Tribhuvan University with a B.Sc. in Computer Science and Information Technology (CSIT). I initially focused on frontend development, but I have since expanded my skills and am now a fullstack developer, passionate about creating seamless and efficient digital solutions.
+          Hello, I&apos;m  Raajz, a graduate from Tribhuvan University with a B.Sc. in Computer Science and Information Technology (CSIT). I initially focused on frontend development, but I have since expanded my skills and am now a fullstack developer, passionate about creating seamless and efficient digital solutions.
           </p>
           <div>
             <Link

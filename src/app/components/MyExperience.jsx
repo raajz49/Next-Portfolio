@@ -1,75 +1,74 @@
+// pages/timelinePage.js
 "use client";
-import { GraduationCap, Briefcase } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { GraduationCap } from 'lucide-react';
+import React from 'react';
+import { RiReactjsFill } from 'react-icons/ri';
 
-const MyExperience = () => {
-  const [scrollY, setScrollY] = useState(0);
+// Sample data for the timeline
+const experiencesData = [
+  {
+    Name: 'Bachelor of Science in Computer Science and Information Technology',
+    address: 'Kathmandu, Nepal',
+    description: 'Graduated with a Bachelor of Science in Computer Science and Information Technonology in 2024.',
+    date: '2019-2024',
+    icon: <GraduationCap />
+  },
+  {
+    Name: 'Software Engineer',
+    address:'On-Site',
+    description: 'Working as an Associate Software Engineer at Pioneer Associated Private Limited. I used my skills in the PERN stack, utilizing React, Next.js, JavaScript, PostgreSQL, MySQL, and Express.js to build dynamic web applications.',
+    date: '2023 - Present',
+    icon: <RiReactjsFill className='w-[1.5rem] h-[1.5rem]' />
+  },
+  // {
+  //   Name: 'Intern',
+  //   address: 'Internship at XYZ Solutions, contributing to web development projects.',
+  //   date: '2022 - 2023',
+  //   icon: <GraduationCap />
+  // },
+  // {
+  //   Name: 'High School Diploma',
+  //   address: 'Completed high school with a focus on science and mathematics.',
+  //   date: '2017 - 2019',
+  //   icon: <GraduationCap />
+  // },
+];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
+const TimelinePage = () => {
   return (
-    <div className="max-w-4xl mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-8 text-center">My Journey</h2>
-      <div className="relative">
-        {/* Vertical line */}
-        <div className="absolute w-1 bg-gray-300 left-1/2 transform -translate-x-1/2 h-full"></div>
+    <div className='hidden md:block'>
+    <div className=" min-h-screen flex items-center justify-center  p-4">
+      <div className="text-center text-white max-w-5xl mx-auto">
+        <h1 className="text-4xl font-bold mb-8  text-start md:text-center">My Timeline</h1>
+        <div className="relative">
+          {/* Vertical line */}
+          <div className="absolute   ml-[7.5rem] md:ml-0 w-1 bg-gray-400 bg-opacity-80 top-0 bottom-0 left-1/2 transform -translate-x-1/2"></div>
+          {experiencesData.map((item, index) => (
+  <div key={index} className={`flex items-start mb-12 flex-row-reverse md:${index % 2 === 1 ? 'flex-row' : 'flex-row-reverse'}`}>
+    {/* Icon on the left/right */}
+    <div className={`w-1/2 flex justify-center mt-16  md:${index % 2 === 1 ? 'ml-4 md:ml-[26rem]' : 'mr-4 md:mr-[26rem]'}`}>
+      <div className="flex justify-center items-center w-[70px] h-[70px] border-4 border-white rounded-full bg-gray-700 bg-opacity-80 text-white relative -top-5">
+        {/* Replace with appropriate icon */}
+        <span >{item.icon}</span>
+      </div>
+    </div>
+    {/* Content Box */}
+    <div className={`flex flex-col justify-start items-start bg-gray-900 rounded-lg shadow-lg p-6 w-full`}>
+      <h2 className="text-lg font-semibold text-left">{item.Name}</h2>
+      
+      <p className="text-gray-400 font-semibold mb-2">{item.address}</p>
+      <p className="text-gray-400 text-left">{item.description}</p>
+      <p className="text-gray-500 mt-2">{item.date}</p>
+    </div>
+  </div>
+))}
 
-        {/* Work - Left side */}
-        <div
-          className={`flex items-center justify-start w-full mb-16 transition-all duration-500 ease-in-out ${
-            scrollY > 100 ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
-          }`}
-        >
-          <div className="w-1/2  pl-8 mt-[-1rem] bg-gray-800 rounded-lg py-4 relative">
-            <div >
-              <h3 className="text-lg font-semibold">Bachelor in Computer Science and Information Technology</h3>
-            </div>
-            <p className="text-gray-500">Kathmandu, Nepal</p>
-            <p className="text-gray-500">Graduated in 2024.</p>
-          </div>
-          {/* Date on the right side */}
-          <div className="absolute left-[calc(50%+1rem)] top-0 mt-[-10px] pl-10 ">
-            <p className="text-gray-500">2019-2024</p>
-          </div>
-          {/* Emoji for work in center of line */}
-          <div className="flex justify-center items-center w-10 h-10 bg-blue-600 rounded-full text-white absolute left-1/2 transform -translate-x-1/2 -top-5">
-            <GraduationCap size={20} />
-
-          </div>
-        </div>
-
-        {/* College - Right side */}
-        <div
-          className={`flex items-center justify-end w-full mb-10 transition-all duration-500 ease-in-out ${
-            scrollY > 300 ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
-          }`}
-        >
-          <div className="w-1/2  mt-[-0.6rem] bg-gray-800 py-4 rounded-lg  text-right relative">
-            <h3 className="text-lg  font-semibold text-start pl-10">Software Engineer</h3>
-            <p className="text-gray-500 text-start pl-10">On-Site</p>
-            <p className="text-gray-500 text-start pl-10">
-              Working as an Associate Software Engineer at Pioneer Associated Private Limited. I used my skills in the PERN stack, utilizing React, Next.js, JavaScript, PostgreSQL, MySQL, and Express.js to build dynamic web applications.
-            </p>
-          </div>
-          {/* Date on the left side */}
-          <div className="absolute left-[calc(50%-10rem)] top-0 mt-[-10px] ">
-            <p className="text-gray-500">2023 - Present</p>
-          </div>
-          {/* Emoji for college in center of line */}
-          <div className="flex justify-center items-center w-10 h-10 bg-blue-600 rounded-full text-white absolute left-1/2 transform -translate-x-1/2 -top-5">
-            <Briefcase size={20} />
-
-          </div>
         </div>
       </div>
+      
+    </div>
     </div>
   );
 };
 
-export default MyExperience;
+export default TimelinePage;
