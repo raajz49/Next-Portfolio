@@ -5,48 +5,42 @@ import LinkedinIcon from "../../../public/linkedin-icon.svg";
 import Link from "next/link";
 import Image from "next/image";
 
-
-const EmailSection = () => {
-  const [emailSubmitted, setEmailSubmitted] = useState(false);
+const ContactForm = () => {
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = {
-      email: e.target.email.value,
-      subject: e.target.subject.value,
-      message: e.target.message.value,
-    };
-    const JSONdata = JSON.stringify(data);
-    const endpoint = "/api/send";
+    setLoading(true);
 
-    // Form the request for sending data to the server.
-    const options = {
-      // The method is POST because we are sending data.
-      method: "POST",
-      // Tell the server we're sending JSON.
+    const res = await fetch('/api/sendEmail', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      // Body of the request is the JSON data we created above.
-      body: JSONdata,
-    };
+      body: JSON.stringify(formData),
+    });
 
-    const response = await fetch(endpoint, options);
-    const resData = await response.json();
-
-    if (response.status === 200) {
-      console.log("Message sent.");
-      setEmailSubmitted(true);
+    const result = await res.json();
+    setLoading(false);
+    // setSuccess(result.success);
+    if (result.success) {
+      setSuccess(true);
+      // Clear the form fields
+      setFormData({ name: '', email: '', message: '' });
+    } else {
+      setSuccess(false);
     }
   };
 
   return (
     <section
-      id="contact"
-      className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 relative"
-    >
-      <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
-      <div className="">
+    id="contact"
+    className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 relative"
+  >
+     <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
+     <div className="">
         <h5 className="text-xl font-bold text-white my-2">
           Let&apos;s Connect
         </h5>
@@ -65,70 +59,70 @@ const EmailSection = () => {
           </Link>
         </div>
       </div>
-      <div>
-        {emailSubmitted ? (
-          <p className="text-green-500 text-sm mt-2">
-            Email sent successfully!
-          </p>
-        ) : (
-          <form className="flex flex-col" onSubmit={handleSubmit}>
-            <div className="mb-6">
+      
+
+      {/* <h2>Contact Me</h2> */}
+      <form className="flex flex-col"  onSubmit={handleSubmit}>
+      {/* <h5 className="block md:hidden text-xl font-bold text-white my-2">
+      Contact Me</h5> */}
+      <div className="mb-6">
               <label
-                htmlFor="email"
+                htmlFor="name"
                 className="text-white block mb-2 text-sm font-medium"
               >
-                Your email
+                Name
               </label>
-              <input
-                name="email"
-                type="email"
-                id="email"
-                required
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="smudge49@gmail.com"
-              />
-            </div>
-            <div className="mb-6">
+        <input
+          type="text"
+          placeholder="Steve Smith"
+          value={formData.name}
+          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          required
+            className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
+                
+        />
+        </div>
+        <div className="mb-6">
               <label
-                htmlFor="subject"
+                htmlFor="Email"
                 className="text-white block text-sm mb-2 font-medium"
               >
-                Subject
+                Email
               </label>
-              <input
-                name="subject"
-                type="text"
-                id="subject"
-                required
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="Just saying hi"
-              />
-            </div>
-            <div className="mb-6">
+        <input
+          type="email"
+          placeholder="smudge@gmail.com"
+          value={formData.email}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          required
+            className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
+                
+        />
+        </div>
+        <div className="mb-6">
               <label
                 htmlFor="message"
                 className="text-white block text-sm mb-2 font-medium"
               >
                 Message
               </label>
-              <textarea
-                name="message"
-                id="message"
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="Let's talk about..."
-              />
-            </div>
-            <button
-              type="submit"
-              className="bg-primary-500 hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full"
-            >
-              Send Message
-            </button>
-          </form>
-        )}
-      </div>
+        <textarea
+          className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
+          placeholder="Let's talk about..."
+          value={formData.message}
+          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+          required
+        />
+        </div>
+        <button type="submit" disabled={loading} 
+         className="bg-primary-500 hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full">
+          {loading ? 'Sending...' : 'Send Message'}
+        </button>
+        {success === true && <p>Your message has been sent!</p>}
+        {success === false && <p>Failed to send message. Try again later.</p>}
+      </form>
     </section>
   );
 };
 
-export default EmailSection;
+export default ContactForm;
