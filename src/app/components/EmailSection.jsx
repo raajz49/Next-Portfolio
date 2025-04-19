@@ -37,9 +37,9 @@ const ContactForm = () => {
   return (
     <section
     id="contact"
-    className="grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 relative"
+    className=" relative bg-[#121212] text-white grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 "
   >
-     <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2"></div>
+           <div className="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-1/4 bg-gradient-radial from-teal-800 to-transparent opacity-30 w-80 h-80 rounded-full pointer-events-none" />
      <div className="">
         <h5 className="text-xl font-bold text-white my-2">
           Let&apos;s Connect
@@ -115,7 +115,7 @@ const ContactForm = () => {
         />
         </div>
         <button type="submit" disabled={loading} 
-         className="bg-primary-500 hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full">
+         className="w-full py-3 rounded-full bg-gradient-to-br from-teal-500 to-blue-500 text-white font-semibold hover:opacity-90 transition-opacity disabled:opacity-50">
           {loading ? 'Sending...' : 'Send Message'}
         </button>
         {success === true && <p>Your message has been sent!</p>}
