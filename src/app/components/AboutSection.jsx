@@ -3,7 +3,7 @@ import React, { useTransition, useState } from "react";
 import Image from "next/image";
 import TabButton from "./TabButton";
 import { FaNodeJs, FaReact } from "react-icons/fa";
-import { SiExpress, SiMysql, SiRefine, SiTypescript } from "react-icons/si";
+import { SiExpress, SiMysql, SiRefine, SiTypescript, SiVuedotjs } from "react-icons/si";
 import { DiJavascript } from "react-icons/di";
 import { BiLogoPostgresql } from "react-icons/bi";
 import { TbBrandPrisma, TbBrandRedux } from "react-icons/tb";
@@ -16,10 +16,10 @@ const TAB_DATA = [
     items: [
       { name: "React", icon: <FaReact  className="w-8 h-8 " /> },
       { name: "Next", icon: <RiNextjsFill  className="w-8 h-8 " /> },
+      { name: "Vue.js", icon: <SiVuedotjs className="w-6 h-8" /> },
       { name: "Node.js", icon: <FaNodeJs className="w-6 h-8" /> },
       { name: "Express", icon: <SiExpress className="w-6 h-8" /> },
       { name: "PostgreSQL", icon: <BiLogoPostgresql  className="w-6 h-8" /> },
-      { name: "MySQL", icon: <SiMysql className="w-6 h-8" /> },
       { name: "Refine", icon: < SiRefine  className="w-6 h-8" /> },
       { name: "Redux", icon: < TbBrandRedux   className="w-6 h-8" /> },
       { name: "Zustand", icon: < SiRefine  className="w-6 h-8" /> },
@@ -100,7 +100,7 @@ const AboutSection = () => {
           </div>
           <div className="mt-8">
             {tab === "skills" ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 gap-x-16">
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-x-16">
                 {TAB_DATA.find((t) => t.id === tab).items.map((item, index) => (
                   <div
                     key={index}
