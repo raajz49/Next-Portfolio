@@ -46,7 +46,7 @@ const experiencesData = [
 const TimelinePage = () => {
   return (
     <div className='hidden md:block'>
-    <div className=" min-h-screen flex items-center justify-center  p-4">
+    <div className="flex justify-center  p-4">
       <div className="text-center text-white max-w-5xl mx-auto">
         <h1 className="text-4xl font-bold mb-8  text-start md:text-center">My Timeline</h1>
         <div className="relative">

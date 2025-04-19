@@ -29,13 +29,16 @@ const Navbar = () => {
       <div className="flex  container  flex-wrap items-center justify-between mx-auto px-4">
         <Link
           href={"/"}
+          className="p-1"
         >
-          <Image 
-          src='/namelogo.png'
-          alt="hello"
-          height={0}
-          width={100}
-          />
+      <Image 
+  src='/developer.png'
+  alt="hello"
+  height={0}
+  width={60}
+  className="rounded-full p-1 bg-gray-700 bg-opacity-30"
+/>
+
         </Link>
         <div className="mobile-menu block md:hidden">
           {!navbarOpen ? (
