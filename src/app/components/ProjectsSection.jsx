@@ -42,25 +42,33 @@ export default function ProjectsSection() {
       </div>
 
       {/* Project Grid */}
-      <ul ref={ref} className="grid md:grid-cols-3 gap-8 px-4 md:px-0">
-        {filteredProjects.map((project, idx) => (
-          <motion.li
-            key={project.id}
-            variants={cardVariants}
-            initial="initial"
-            animate={isInView ? 'animate' : 'initial'}
-            transition={{ duration: 0.4, delay: idx * 0.2 }}
-          >
-            <ProjectCard
-              title={project.title}
-              description={project.description}
-              imgUrl={project.image}
-              gitUrl={project.gitUrl}
-              previewUrl={project.previewUrl}
-            />
-          </motion.li>
-        ))}
-      </ul>
+      {filteredProjects.length === 0 ? (
+  <div className="text-center text-lg text-gray-400 py-16 col-span-3">
+    <p>No projects found in this category.</p>
+    <p className="text-sm mt-2">Please select a different tag.</p>
+  </div>
+) : (
+  <ul ref={ref} className="grid md:grid-cols-3 gap-8 px-4 md:px-0">
+    {filteredProjects.map((project, idx) => (
+      <motion.li
+        key={`${project.id}-${idx}`}
+        variants={cardVariants}
+        initial="initial"
+        animate={isInView ? 'animate' : 'initial'}
+        transition={{ duration: 0.4, delay: idx * 0.2 }}
+      >
+        <ProjectCard
+          title={project.title}
+          description={project.description}
+          imgUrl={project.image}
+          gitUrl={project.gitUrl}
+          previewUrl={project.previewUrl}
+        />
+      </motion.li>
+    ))}
+  </ul>
+)}
+
     </section>
   );
 }

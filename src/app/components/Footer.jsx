@@ -10,15 +10,18 @@ const Footer = () => {
         {/* <span>LOGO</span> */}
         <Link
           href={"/"}
+          className="p-1"
         >
           <Image 
-          src='/namelogo.png'
-          alt="hello"
-          height={0}
-          width={100}
+         src='/developer.png'
+         alt="hello"
+         height={0}
+         width={60}
+           className="rounded-full p-1 bg-gray-700 bg-opacity-30"
+
           />
         </Link>
-        <p className="text-slate-600 mt-10 mr-10 "><FaRegCopyright className="inline mt-[-3px]" />  All rights reserved.</p>
+        <p className="text-slate-600 mt-5 mr-10 "><FaRegCopyright className="inline mt-[-3px]" />  All rights reserved.</p>
       </div>
       <p className="text-center text-slate-600  ">Made with <FaHeart className="inline text-red-500"/> by raajz</p>
 

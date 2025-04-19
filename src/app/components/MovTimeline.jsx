@@ -2,10 +2,25 @@
 "use client";
 import { GraduationCap } from 'lucide-react';
 import React from 'react';
+import { FaVuejs } from 'react-icons/fa';
 import { RiReactjsFill } from 'react-icons/ri';
 
 // Sample data for the timeline
 const experiencesData = [
+    {
+      name: 'Frontend Developer',
+      address: 'On-Site',
+      description: 'Currently working as a Junior Frontend Developer at Aayulogic Private Limited. I utilize my skills in Vue.js and its ecosystem to build dynamic web applications focused primarily on automating HRMS features.',
+      date: '2025 – Present',
+      icon: <FaVuejs className="w-[1.5rem] h-[1.5rem]" />
+    },  
+    {
+      Name: 'Software Engineer',
+      address:'On-Site',
+      description: 'Working as an Associate Software Engineer at Pioneer Associated Private Limited. I used my skills in the PERN stack, utilizing React, Next.js, JavaScript, PostgreSQL, MySQL, and Express.js to build dynamic web applications.',
+      date: '2024 - Present',
+      icon: <RiReactjsFill className='w-[1.5rem] h-[1.5rem]' />
+    },
   {
     Name: 'Bachelor in Computer Science and Information Technology',
     address: 'Kathmandu, Nepal',
@@ -13,13 +28,7 @@ const experiencesData = [
     date: '2019-2024',
     icon: <GraduationCap />
   },
-  {
-    Name: 'Software Engineer',
-    address:'On-Site',
-    description: 'Working as an Associate Software Engineer at Pioneer Associated Private Limited. I used my skills in the PERN stack, utilizing React, Next.js, JavaScript, PostgreSQL, MySQL, and Express.js to build dynamic web applications.',
-    date: '2023 - Present',
-    icon: <RiReactjsFill className='w-[1.5rem] h-[1.5rem]' />
-  },
+
   // {
   //   Name: 'Intern',
   //   address: 'Internship at XYZ Solutions, contributing to web development projects.',
