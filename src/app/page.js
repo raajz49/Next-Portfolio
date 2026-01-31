@@ -1,27 +1,21 @@
 import HeroSection from "./components/HeroSection";
-import Navbar from "./components/Navbar";
+import TributeSection from "./components/TributeSection";
 import AboutSection from "./components/AboutSection";
 import ProjectsSection from "./components/ProjectsSection";
 import EmailSection from "./components/EmailSection";
 import MyExperienceSection from "./components/MyExperience";
 import CustomizedTimeline from "./components/MovTimeline";
 
-import Footer from "./components/Footer";
-
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col bg-[#121212]">
-      <Navbar />
-      <div className="container mt-24 mx-auto px-12 py-4">
-        <HeroSection />
-        {/* <AchievementsSection /> */}
-        <AboutSection />
-        <MyExperienceSection />
-        <CustomizedTimeline />
-        <ProjectsSection />
-        <EmailSection />
-      </div>
-      <Footer />
-    </main>
+    <div className="container mt-24 mx-auto px-4 py-4 md:px-12">
+      <HeroSection />
+      <TributeSection />
+      <AboutSection />
+      <MyExperienceSection />
+      <CustomizedTimeline />
+      <ProjectsSection />
+      <EmailSection />
+    </div>
   );
 }

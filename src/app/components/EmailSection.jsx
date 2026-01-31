@@ -1,11 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import GithubIcon from "../../../public/github-icon.svg";
-import LinkedinIcon from "../../../public/linkedin-icon.svg";
+import { Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
+import { cn } from "@/lib/utils";
 
-const ContactForm = () => {
+const EmailSection = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(null);
@@ -16,18 +15,14 @@ const ContactForm = () => {
 
     const res = await fetch('/api/sendEmail', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData),
     });
 
     const result = await res.json();
     setLoading(false);
-    // setSuccess(result.success);
     if (result.success) {
       setSuccess(true);
-      // Clear the form fields
       setFormData({ name: '', email: '', message: '' });
     } else {
       setSuccess(false);
@@ -35,94 +30,95 @@ const ContactForm = () => {
   };
 
   return (
-    <section
-    id="contact"
-    className=" relative bg-[#121212] text-white grid md:grid-cols-2 my-12 md:my-12 py-24 gap-4 "
-  >
-           <div className="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-1/4 bg-gradient-radial from-teal-800 to-transparent opacity-30 w-80 h-80 rounded-full pointer-events-none" />
-     <div className="">
-        <h5 className="text-xl font-bold text-white my-2">
-          Let&apos;s Connect
-        </h5>
-        <p className="text-[#ADB7BE] mb-4 max-w-md">
-          {" "}
-          I&apos;m currently looking for new opportunities, my inbox is always
-          open. Whether you have a question or just want to say hi, I&apos;ll
-          try my best to get back to you!
-        </p>
-        <div className="socials flex flex-row gap-2">
-          <Link href="https://github.com/raajz49">
-            <Image src={GithubIcon} alt="Github Icon" />
-          </Link>
-          <Link href="https://www.linkedin.com/in/rajkoirala/">
-            <Image src={LinkedinIcon} alt="Linkedin Icon" />
-          </Link>
-        </div>
-      </div>
-      
+    <section id="contact" className="py-24 relative overflow-hidden">
+      {/* Decorative Background */}
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] -z-10" />
 
-      {/* <h2>Contact Me</h2> */}
-      <form className="flex flex-col"  onSubmit={handleSubmit}>
-      {/* <h5 className="block md:hidden text-xl font-bold text-white my-2">
-      Contact Me</h5> */}
-      <div className="mb-6">
-              <label
-                htmlFor="name"
-                className="text-white block mb-2 text-sm font-medium"
-              >
-                Name
-              </label>
-        <input
-          type="text"
-          placeholder="Steve Smith"
-          value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          required
-            className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                
-        />
+      <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h5 className="text-xl font-bold font-mono text-primary mb-2 uppercase tracking-widest">
+            Post Match Presentation
+          </h5>
+          <h2 className="text-4xl font-bold mb-6">Let&apos;s Connect</h2>
+          <p className="text-muted-foreground mb-8 text-lg leading-relaxed max-w-md">
+            I&apos;m currently looking for new opportunities/partnerships. 
+            Whether you have a question or just want to discuss the latest test match, 
+            my inbox is always open.
+          </p>
+          
+          <div className="flex gap-4">
+            <Link href="https://github.com/raajz49" className="p-3 bg-card border border-border rounded-full hover:bg-primary hover:text-primary-foreground transition-all shadow-sm">
+              <Github className="w-6 h-6" />
+            </Link>
+            <Link href="https://www.linkedin.com/in/rajkoirala/" className="p-3 bg-card border border-border rounded-full hover:bg-primary hover:text-primary-foreground transition-all shadow-sm">
+              <Linkedin className="w-6 h-6" />
+            </Link>
+            <Link href="mailto:smudge@gmail.com" className="p-3 bg-card border border-border rounded-full hover:bg-primary hover:text-primary-foreground transition-all shadow-sm">
+              <Mail className="w-6 h-6" />
+            </Link>
+          </div>
         </div>
-        <div className="mb-6">
-              <label
-                htmlFor="Email"
-                className="text-white block text-sm mb-2 font-medium"
-              >
-                Email
-              </label>
-        <input
-          type="email"
-          placeholder="smudge@gmail.com"
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          required
-            className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                
-        />
-        </div>
-        <div className="mb-6">
-              <label
-                htmlFor="message"
-                className="text-white block text-sm mb-2 font-medium"
-              >
-                Message
-              </label>
-        <textarea
-          className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-          placeholder="Let's talk about..."
-          value={formData.message}
-          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          required
-        />
-        </div>
-        <button type="submit" disabled={loading} 
-         className="w-full py-3 rounded-full bg-gradient-to-br from-teal-500 to-blue-500 text-white font-semibold hover:opacity-90 transition-opacity disabled:opacity-50">
-          {loading ? 'Sending...' : 'Send Message'}
-        </button>
-        {success === true && <p>Your message has been sent!</p>}
-        {success === false && <p>Failed to send message. Try again later.</p>}
-      </form>
+
+        <form className="flex flex-col gap-6 bg-card p-8 rounded-2xl border border-border shadow-lg" onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="name" className="block mb-2 text-sm font-medium">Name</label>
+            <input
+              type="text"
+              id="name"
+              placeholder="Steve Smith"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              required
+              className="w-full p-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+            />
+          </div>
+          <div>
+            <label htmlFor="email" className="block mb-2 text-sm font-medium">Email</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="smudge@cricket.com.au"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              required
+              className="w-full p-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
+            />
+          </div>
+          <div>
+            <label htmlFor="message" className="block mb-2 text-sm font-medium">Message</label>
+            <textarea
+              id="message"
+              rows={4}
+              placeholder="Let's talk about..."
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              required
+              className="w-full p-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none"
+            />
+          </div>
+          
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full py-4 rounded-lg bg-primary text-primary-foreground font-bold hover:bg-primary/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary/25"
+          >
+            {loading ? 'Sending...' : 'Send Message'}
+          </button>
+          
+          {success === true && (
+            <p className="text-green-500 text-sm font-medium text-center mt-2">
+              Message sent successfully!
+            </p>
+          )}
+          {success === false && (
+            <p className="text-red-500 text-sm font-medium text-center mt-2">
+              Failed to send message. Please try again.
+            </p>
+          )}
+        </form>
+      </div>
     </section>
   );
 };
 
-export default ContactForm;
+export default EmailSection;

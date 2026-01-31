@@ -1,84 +1,59 @@
-// pages/timelinePage.js
 "use client";
 import { GraduationCap } from 'lucide-react';
 import React from 'react';
 import { FaVuejs } from 'react-icons/fa';
 import { RiReactjsFill } from 'react-icons/ri';
 
-// Sample data for the timeline
 const experiencesData = [
-    {
-      name: 'Frontend Developer',
-      address: 'On-Site',
-      description: 'Currently working as a Junior Frontend Developer at Aayulogic Private Limited. I utilize my skills in Vue.js and its ecosystem to build dynamic web applications focused primarily on automating HRMS features.',
-      date: '2025 – Present',
-      icon: <FaVuejs className="w-[1.5rem] h-[1.5rem]" />
-    },  
-    {
-      Name: 'Software Engineer',
-      address:'On-Site',
-      description: 'Working as an Associate Software Engineer at Pioneer Associated Private Limited. I used my skills in the PERN stack, utilizing React, Next.js, JavaScript, PostgreSQL, MySQL, and Express.js to build dynamic web applications.',
-      date: '2024 - Present',
-      icon: <RiReactjsFill className='w-[1.5rem] h-[1.5rem]' />
-    },
+  
   {
-    Name: 'Bachelor in Computer Science and Information Technology',
+    name: 'Frontend Developer',
+    address: 'On-Site',
+    description: 'Currently working as a Junior Frontend Developer at Aayulogic Private Limited. I utilize my skills in Vue.js and its ecosystem to build dynamic web applications.',
+    date: '2025 – Present',
+    icon: <FaVuejs className="w-[1.2rem] h-[1.2rem]" />
+  },  
+  {
+    name: 'Software Engineer',
+    address:'On-Site',
+    description: 'Working as an Associate Software Engineer at Pioneer Associated Private Limited using PERN stack.',
+    date: '2024 - Present',
+    icon: <RiReactjsFill className='w-[1.2rem] h-[1.2rem]' />
+  },
+  {
+    name: 'Bachelor in CSIT',
     address: 'Kathmandu, Nepal',
     description: 'Graduated with a Bachelor of Science in Computer Science and Information Technonology in 2024.',
     date: '2019-2024',
     icon: <GraduationCap />
   },
-
-  // {
-  //   Name: 'Intern',
-  //   address: 'Internship at XYZ Solutions, contributing to web development projects.',
-  //   date: '2022 - 2023',
-  //   icon: <GraduationCap />
-  // },
-  // {
-  //   Name: 'High School Diploma',
-  //   address: 'Completed high school with a focus on science and mathematics.',
-  //   date: '2017 - 2019',
-  //   icon: <GraduationCap />
-  // },
 ];
 
-const TimelinePage = () => {
+const MobileTimelinePage = () => {
   return (
-    <div className='block md:hidden container mx-auto ml-2 p-10 '>
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="text-center text-white max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8 text-start md:text-center">My Timeline</h1>
-        <div className="relative">
-          {/* Vertical line for all screen sizes */}
-          <div className="absolute w-1 bg-gray-400 bg-opacity-80 top-0 bottom-0 left-6 transform md:-translate-x-1/2"></div>
-  
-          {experiencesData.map((item, index) => (
-            <div 
-              key={index} 
-              className="flex items-start mb-12 gap-2"
-            >
-              {/* Icon aligned to the left for all screens */}
-              <div className="w-16 h-14  flex justify-center items-center border-4  border-white rounded-full bg-gray-700 bg-opacity-80 text-white relative mt-10 ">
-                {item.icon}
-              </div>
-              <div className='mx-auto container '>
-              {/* Content Box with increased width and gap */}
-              <div className={`flex flex-col justify-start items-start bg-gray-900 rounded-lg shadow-lg p-6 w-[20rem]`}>
-      <h2 className="text-[16px] font-semibold text-left">{item.Name}</h2>
-      
-      <p className="text-[13px] text-gray-400 font-semibold mb-2">{item.address}</p>
-      <p className="text-[13px] text-gray-400 text-left">{item.description}</p>
-      <p className="text-[13px] text-gray-500 mt-2">{item.date}</p>
-    </div>
+    <div className='block md:hidden py-12 px-4'>
+      <h1 className="text-3xl font-bold mb-8 text-center text-foreground">My Timeline</h1>
+      <div className="relative pl-8 border-l-2 border-border ml-4 space-y-12">
+        {experiencesData.map((item, index) => (
+          <div key={index} className="relative">
+             {/* Icon Dot */}
+            <div className="absolute -left-[45px] top-0 flex items-center justify-center w-10 h-10 rounded-full bg-background border-2 border-primary text-primary shadow-sm">
+               {item.icon}
             </div>
+            
+            <div className="bg-card border border-border rounded-xl p-5 shadow-sm">
+                <h2 className="text-base font-bold text-foreground mb-1">{item.name}</h2>
+                <p className="text-xs font-semibold text-primary mb-2">{item.address}</p>
+                <p className="text-xs text-muted-foreground mb-3">{item.description}</p>
+                <div className="text-xs font-mono text-muted-foreground bg-muted inline-block px-2 py-1 rounded">
+                    {item.date}
+                </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
-    </div>
     </div>
   );
 }  
 
-export default TimelinePage;
+export default MobileTimelinePage;

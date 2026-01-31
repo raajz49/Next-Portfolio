@@ -1,32 +1,42 @@
-import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import { FaHeart, FaRegCopyright } from "react-icons/fa";
+import { Github, Linkedin, Twitter } from "lucide-react";
 
-const Footer = () => {
+export default function Footer() {
   return (
-    <footer className="footer border z-10 border-t-[#33353F] border-l-transparent border-r-transparent text-white">
-      <div className="mt-auto  flex justify-between">
-        {/* <span>LOGO</span> */}
-        <Link
-          href={"/"}
-          className="p-1"
-        >
-          <Image 
-         src='/developer.png'
-         alt="hello"
-         height={0}
-         width={60}
-           className="rounded-full p-1 bg-gray-700 bg-opacity-30"
-
-          />
-        </Link>
-        <p className="text-slate-600 mt-5 mr-10 "><FaRegCopyright className="inline mt-[-3px]" />  All rights reserved.</p>
+    <footer className="w-full border-t border-border bg-background/50 backdrop-blur-sm pt-12 pb-8">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="flex flex-col items-center md:items-start">
+            <h3 className="text-xl font-bold tracking-tight">
+              <span className="text-primary">Raajz</span> Koirala
+            </h3>
+            <p className="text-sm text-muted-foreground mt-2 max-w-xs text-center md:text-left">
+              Forging digital experiences with the same precision and grit.
+            </p>
+          </div>
+          
+          <div className="flex gap-4">
+            <Link href="https://github.com" className="p-2 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-primary">
+              <Github className="w-5 h-5" />
+            </Link>
+            <Link href="https://linkedin.com" className="p-2 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-primary">
+              <Linkedin className="w-5 h-5" />
+            </Link>
+            <Link href="https://twitter.com" className="p-2 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-primary">
+              <Twitter className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+        
+        <div className="mt-12 pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
+          <p>© {new Date().getFullYear()} Portfolio. All rights reserved.</p>
+          <div className="flex items-center gap-1 mt-4 md:mt-0">
+            <span>Created by the biggest</span>
+            <span className="font-semibold text-primary">Australian Cricket</span>
+            <span>fan. 🏏</span>
+          </div>
+        </div>
       </div>
-      <p className="text-center text-slate-600  ">Made with <FaHeart className="inline text-red-500"/> by raajz</p>
-
     </footer>
   );
-};
-
-export default Footer;
+}

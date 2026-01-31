@@ -1,27 +1,79 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+ 
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    /* "Cricket White" - Inspired by Test Match Whites & Australian sunshine */
+    --background: 0 0% 98%;      /* Very polished off-white */
+    --foreground: 155 42% 18%;   /* Deep Cricket Green for text */
+ 
+    --card: 0 0% 100%;
+    --card-foreground: 155 42% 18%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 155 42% 18%;
+ 
+    --primary: 155 100% 26%;     /* Australian Cricket Green #00843D */
+    --primary-foreground: 48 100% 50%; /* Gold Text on Green */
+ 
+    --secondary: 48 100% 50%;    /* Australian Gold #FFCD00 */
+    --secondary-foreground: 155 42% 18%;
+ 
+    --muted: 155 20% 90%;        /* Faint Green Grey */
+    --muted-foreground: 155 20% 40%;
+ 
+    --accent: 48 100% 50%;       /* Gold accent */
+    --accent-foreground: 155 42% 18%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 155 20% 90%;
+    --input: 155 20% 90%;
+    --ring: 155 100% 26%;
+ 
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    /* "Stadium Night" - Inspired by SCG Night Tests, Grass under lights */
+    --background: 155 42% 5%;    /* Very deep, almost black green */
+    --foreground: 48 20% 90%;    /* Soft Gold-White for readability */
+ 
+    --card: 155 42% 8%;          /* Slightly lighter deep green */
+    --card-foreground: 48 20% 90%;
+ 
+    --popover: 155 42% 8%;
+    --popover-foreground: 48 20% 90%;
+ 
+    /* Neon/Stadium Green highlights */
+    --primary: 155 80% 40%;      
+    --primary-foreground: 155 42% 5%;
+ 
+    --secondary: 48 100% 50%;    /* Vibrant Gold */
+    --secondary-foreground: 155 42% 10%;
+ 
+    --muted: 155 30% 15%;
+    --muted-foreground: 155 20% 65%;
+ 
+    --accent: 155 30% 15%;
+    --accent-foreground: 48 100% 50%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+ 
+    --border: 155 30% 15%;
+    --input: 155 30% 15%;
+    --ring: 48 100% 50%;
   }
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
