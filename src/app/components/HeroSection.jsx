@@ -48,7 +48,8 @@ const HeroSection = () => {
           <p className="text-muted-foreground text-base sm:text-lg lg:text-xl mb-8 max-w-2xl leading-relaxed">
             Crafting world-class digital experiences with the precision of a
             master batsman. From pixel-perfect frontend to robust backend
-            architectures.
+            architectures shaped not only by technology, but by moments and
+            people that once mattered.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center sm:justify-start">
             <Link
