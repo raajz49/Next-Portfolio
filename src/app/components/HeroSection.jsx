@@ -9,16 +9,16 @@ import { ArrowRight } from "lucide-react";
 const HeroSection = () => {
   return (
     <section className="lg:py-24 relative overflow-hidden">
-        {/* Abstract Stadium Background Elements */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] -z-10" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-amber-400/10 rounded-full blur-[120px] -z-10" />
+      {/* Abstract Stadium Background Elements */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] -z-10" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-amber-400/10 rounded-full blur-[120px] -z-10" />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="col-span-7 place-self-center text-center sm:text-left"
+          className="col-span-7 place-self-center text-left"
         >
           <div className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wide text-amber-500 uppercase bg-amber-500/10 rounded-full border border-amber-500/20">
             Game On
@@ -28,7 +28,7 @@ const HeroSection = () => {
               Hello, I&apos;m Raajz
             </span>
             <span className="text-2xl sm:text-4xl lg:text-5xl text-muted-foreground font-semibold block mt-4">
-               <TypeAnimation
+              <TypeAnimation
                 sequence={[
                   "Web Developer",
                   2000,
@@ -46,8 +46,9 @@ const HeroSection = () => {
             </span>
           </h1>
           <p className="text-muted-foreground text-base sm:text-lg lg:text-xl mb-8 max-w-2xl leading-relaxed">
-             Crafting world-class digital experiences with the precision of a master batsman. 
-             From pixel-perfect frontend to robust backend architectures.
+            Crafting world-class digital experiences with the precision of a
+            master batsman. From pixel-perfect frontend to robust backend
+            architectures.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center sm:justify-start">
             <Link
@@ -66,25 +67,25 @@ const HeroSection = () => {
             </Link>
           </div>
         </motion.div>
-        
+
         <motion.div
           initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 0.8 }}
-          className="col-span-5 place-self-center mt-12 lg:mt-0 relative"
+          className="col-span-7 lg:col-span-5 place-self-center mt-12 lg:mt-0 relative"
         >
           <div className="relative w-[300px] h-[300px] lg:w-[450px] lg:h-[450px]">
             {/* Decorative Ring */}
-             <div className="absolute inset-0 rounded-full border-2 border-dashed border-primary/30 animate-[spin_60s_linear_infinite]" />
-             
+            <div className="absolute inset-0 rounded-full border-2 border-dashed border-primary/30 animate-[spin_60s_linear_infinite]" />
+
             <div className="absolute inset-4 rounded-full overflow-hidden bg-muted border-4 border-amber-400 shadow-2xl shadow-amber-500/20">
-                <Image
+              <Image
                 src="/images/profilepic.jpg"
                 alt="Raajz Koirala"
                 layout="fill"
                 objectFit="cover"
                 className="hover:scale-105 transition-transform duration-700"
-                />
+              />
             </div>
           </div>
         </motion.div>

@@ -29,13 +29,16 @@ export default function Navbar() {
     <nav
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent",
-        scrolled
-          ? "bg-background/80 backdrop-blur-md border-border shadow-sm py-4"
-          : "bg-transparent py-6"
+        scrolled ?
+          "bg-background/80 backdrop-blur-md border-border shadow-sm py-4"
+        : "bg-transparent py-6",
       )}
     >
-      <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link href="/" className="font-bold text-2xl tracking-tighter flex items-center gap-2 group">
+      <div className="container mx-auto px-4 py-4 md:px-12 flex items-center justify-between">
+        <Link
+          href="/"
+          className="font-bold text-2xl tracking-tighter flex items-center gap-2 group"
+        >
           <span className="text-primary group-hover:text-amber-500 transition-colors">
             Raajz
           </span>
@@ -62,7 +65,10 @@ export default function Navbar() {
           >
             <motion.div
               initial={false}
-              animate={{ rotate: theme === "dark" ? 180 : 0, scale: theme === "dark" ? 0 : 1 }}
+              animate={{
+                rotate: theme === "dark" ? 180 : 0,
+                scale: theme === "dark" ? 0 : 1,
+              }}
               transition={{ duration: 0.2 }}
               className="absolute"
             >
@@ -70,7 +76,10 @@ export default function Navbar() {
             </motion.div>
             <motion.div
               initial={false}
-              animate={{ rotate: theme === "dark" ? 0 : -180, scale: theme === "dark" ? 1 : 0 }}
+              animate={{
+                rotate: theme === "dark" ? 0 : -180,
+                scale: theme === "dark" ? 1 : 0,
+              }}
               transition={{ duration: 0.2 }}
               className="absolute"
             >

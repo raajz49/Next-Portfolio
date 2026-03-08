@@ -7,6 +7,26 @@ import { motion, useInView } from "framer-motion";
 const projectsData = [
   {
     id: 1,
+    title: "Reviews AI",
+    description:
+      "ReviewsAI is a web and desktop application that helps engineers annotate, review, and track findings on their engineering documents.",
+    image: "/images/projects/reviewsai.png",
+    tag: ["All", "Web"],
+    gitUrl: "https://reviewsai.com.au/",
+    previewUrl: "https://reviewsai.com.au/",
+  },
+  {
+    id: 1,
+    title: "My Blog",
+    description:
+      "A simple agentic blog site built with Next.js that explores AI-driven content and automation.",
+    image: "/images/projects/blog.png",
+    tag: ["All", "Web"],
+    gitUrl: "https://github.com/raajz49/Blog-site",
+    previewUrl: "https://blog.rajkoirala.com.np/",
+  },
+  {
+    id: 1,
     title: "Stabilisation",
     description: "A web app with blogging and stabilization features for UNDP.",
     image: "/images/projects/image.png",
@@ -37,7 +57,7 @@ const projectsData = [
     title: "Movie Recommendation System",
     description:
       "For latest movie and series recommendation on the basis of rating and popularity",
-    image: "/images/projects/movie.png",
+    image: "/images/projects/moviedb.png",
     tag: ["All", "Web"],
     gitUrl: "https://github.com/raajz49/Movie-Review-System",
     previewUrl: "https://rmdb.rajkoirala.com.np/",
@@ -50,7 +70,7 @@ export default function ProjectsSection() {
   const isInView = useInView(ref, { once: true });
 
   const filteredProjects = projectsData.filter((project) =>
-    project.tag.includes(tag)
+    project.tag.includes(tag),
   );
 
   const cardVariants = {
@@ -62,26 +82,25 @@ export default function ProjectsSection() {
     <section id="projects" className="py-24">
       <div className="flex flex-col items-center mb-16">
         <h2 className="text-3xl font-bold mb-4 flex items-center gap-2">
-           <span className="text-primary">03.</span> Match Highlights
+          <span className="text-primary">03.</span> Match Highlights
         </h2>
         <div className="flex justify-center items-center gap-3 flex-wrap">
-            {["All", "Web", "Mobile"].map((name) => (
+          {["All", "Web", "Mobile"].map((name) => (
             <ProjectTag
-                key={name}
-                name={name}
-                isSelected={tag === name}
-                onClick={setTag}
+              key={name}
+              name={name}
+              isSelected={tag === name}
+              onClick={setTag}
             />
-            ))}
+          ))}
         </div>
       </div>
 
-      {filteredProjects.length === 0 ? (
+      {filteredProjects.length === 0 ?
         <div className="text-center text-muted-foreground py-16">
           <p>No innings found to display.</p>
         </div>
-      ) : (
-        <ul ref={ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      : <ul ref={ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, idx) => (
             <motion.li
               key={project.id}
@@ -100,7 +119,7 @@ export default function ProjectsSection() {
             </motion.li>
           ))}
         </ul>
-      )}
+      }
     </section>
   );
 }
