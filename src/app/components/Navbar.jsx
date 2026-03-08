@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 export default function Navbar() {
-  const { theme, setTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -59,15 +59,17 @@ export default function Navbar() {
             ))}
           </div>
           <button
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            onClick={() =>
+              setTheme(resolvedTheme === "dark" ? "light" : "dark")
+            }
             className="p-2 rounded-full hover:bg-muted/50 transition-colors relative w-10 h-10 flex items-center justify-center border border-border"
             aria-label="Toggle Theme"
           >
             <motion.div
               initial={false}
               animate={{
-                rotate: theme === "dark" ? 180 : 0,
-                scale: theme === "dark" ? 0 : 1,
+                rotate: resolvedTheme === "dark" ? 180 : 0,
+                scale: resolvedTheme === "dark" ? 0 : 1,
               }}
               transition={{ duration: 0.2 }}
               className="absolute"
@@ -77,8 +79,8 @@ export default function Navbar() {
             <motion.div
               initial={false}
               animate={{
-                rotate: theme === "dark" ? 0 : -180,
-                scale: theme === "dark" ? 1 : 0,
+                rotate: resolvedTheme === "dark" ? 0 : -180,
+                scale: resolvedTheme === "dark" ? 1 : 0,
               }}
               transition={{ duration: 0.2 }}
               className="absolute"
