@@ -184,7 +184,7 @@ const AboutSection = () => {
             ))}
           </div>
 
-          <div className="min-h-[300px]">
+          <div className="min-h-[100px]">
             {tab === "skills" ?
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {TAB_DATA.find((t) => t.id === tab).items.map((item, index) => (
